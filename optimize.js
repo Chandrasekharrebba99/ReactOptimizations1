@@ -330,3 +330,39 @@ ReactDOM.render(
 reportWebVitals();
 Now, when you run your React app (npm start), you should see a simple counter with "Increment" and "Decrement" buttons, and the state of the counter will be managed by the Redux store. This is a basic example, and in real-world applications, you might have more complex state management and multiple reducers.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// React optimizations
+// memoization
+
+  function fib(n, prevValues = []) {
+  if (prevValues[n] != null) {
+    return prevValues[n];
+  }
+
+  let result;
+  if (n <= 2) {
+    result = 1;
+  } else {
+    result = fib(n - 1, prevValues) + fib(n - 2, prevValues);
+  }
+
+  prevValues[n] = result;
+  return result;
+}
+
+console.log(fib(40));
+
+  
