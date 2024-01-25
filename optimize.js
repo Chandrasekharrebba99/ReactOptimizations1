@@ -365,4 +365,96 @@ Now, when you run your React app (npm start), you should see a simple counter wi
 
 console.log(fib(40));
 
+
+// User
+// what are this  Webpack, Rollup or Browserify.
+// Module bundlers
+
+// Lazy loading
+
+Lazy loading is for to increase the loading speed of the application
+using danamic import method
+How?
+  By using dynamic import concept and code spliting
+Now what is dynamic importing concept?
   
+
+// Bundiling,codespliting,dynamic import 
+
+  React Lazy Loading is a technique used to improve the performance of your React application by splitting it into smaller chunks and loading them only when needed. This is particularly useful for larger applications where loading everything upfront might lead to slower initial page loads.
+
+When working with React Router, you can use the React.lazy function to dynamically import a component only when it's needed. Here's a simple example using React.lazy with React Router:
+
+Assuming you have a component that you want to lazily load, for example, a component named MyComponent:
+
+jsx
+Copy code
+// MyComponent.js
+import React from 'react';
+
+const MyComponent = () => {
+  return (
+    <div>
+      <h2>This is my lazy-loaded component!</h2>
+    </div>
+  );
+};
+
+export default MyComponent;
+Now, in your main file or wherever you define your routes, you can use React.lazy to lazily load this component:
+
+jsx
+Copy code
+// App.js
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const MyComponent = lazy(() => import('./MyComponent'));
+
+const LoadingFallback = () => <div>Loading...</div>;
+
+const App = () => {
+  return (
+    <Router>
+      <Suspense fallback={<LoadingFallback />}>
+        <Switch>
+          <Route path="/lazy" component={MyComponent} />
+          {/* Other routes go here */}
+        </Switch>
+      </Suspense>
+    </Router>
+  );
+};
+
+export default App;
+In this example:
+
+The lazy function is used to load MyComponent lazily. It takes a function that must call import() and returns a promise that resolves to the module containing the component.
+
+The Suspense component is used to wrap the routes where the lazy-loaded components are used. The fallback prop specifies a component to render while the lazy component is loading.
+
+Inside the Switch component, the Route for the lazy-loaded component (/lazy in this case) uses the component prop to specify the lazily loaded component.
+
+Now, when the user navigates to the /lazy route, MyComponent will be loaded only at that point, reducing the initial load time of your application.
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
