@@ -1,6 +1,6 @@
 use memo react memo difference
 ChatGPT
-In React, both memo and React.memo are used to optimize the performance of functional components by preventing unnecessary renders. They are essentially the same thing, but React.memo is the official way to use memoization in React, while memo is a shorthand for React.memo provided by the react package.
+The named import `memo` and `React.memo` refer to the same React API.
 
 Here's an example to illustrate the usage of React.memo:
 
@@ -36,7 +36,7 @@ const MyComponent = memo(({ prop1, prop2 }) => {
 });
 
 export default MyComponent;
-In both examples, the memo or React.memo function is used to memoize the component, which means that the component will only re-render if its props have changed. This can be beneficial for performance, especially when dealing with large and complex components that might receive frequent prop updates.
+In both examples, memo can skip a render caused by the parent when the props are unchanged. Changes to the component's own state or to context it reads can still trigger a render. See https://react.dev/reference/react/memo.
 
 Keep in mind that memoization is a trade-off between performance and flexibility. While it can prevent unnecessary renders, it might not be suitable for every component, especially those that rely on external state changes. Always consider the specific use case and performance requirements before applying memoization to your components.
 
